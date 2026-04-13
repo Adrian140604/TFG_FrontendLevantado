@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --bs-primary: #2e7d32;
+  --bs-primary-rgb: 46,125,50;
+}
+:root {
+  --bs-primary: #2e7d32;
+  --bs-primary-rgb: 46,125,50;
+
+  --bs-success: #4caf50;
+  --bs-success-rgb: 76,175,80;
+
+  --bs-dark: #1b5e20;
+}
+body {
+  background-color: #f8f9fa;
+}
+
+/* títulos */
+h1, h2, h3 {
+  color: #212529;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

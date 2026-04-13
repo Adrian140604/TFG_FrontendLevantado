@@ -1,0 +1,21 @@
+.custom-navbar {
+  background: linear-gradient(90deg, #1b5e20, #2e7d32);
+}
+.btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #212529;
+}
+.navbar-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%; /* esto lo hace redondo */
+  border: 2px solid white; /* opcional, queda muy bien */
+}
+.navbar-logo {
+  transition: transform 0.2s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.1);
+}
