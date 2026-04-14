@@ -4,11 +4,9 @@
       <div class="card-body p-4">
         <h2 class="text-center mb-4">Registro</h2>
 
-          @if (errorMessage) {
-            <div class="alert alert-danger" role="alert">
-              {{ errorMessage }}
-            </div>
-          }
+         <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+            {{ errorMessage }}
+          </div>
 
           @if (successMessage) {
             <div class="alert alert-success" role="alert">
