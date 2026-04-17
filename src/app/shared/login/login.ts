@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, NgZone } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth-service';
@@ -16,6 +16,8 @@ export class Login {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
+
 
   errorMessage = '';
   successMessage = '';
@@ -52,6 +54,8 @@ export class Login {
         const apiError = errorResponse.error as ApiError;
         this.errorMessage = apiError?.error || 'Ha ocurrido un error inesperado.';
         this.isSubmitting = false;
+        this.cdr.detectChanges(); 
+        
       }
     });
   }

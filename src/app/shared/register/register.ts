@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, NgZone } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth-service';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class Register {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
-
+  private cdr = inject(ChangeDetectorRef);
   errorMessage = '';
   successMessage = '';
   isSubmitting = false;
@@ -60,7 +60,8 @@ export class Register {
       },
       error: (errorResponse) => {
         this.isSubmitting = false;
-        this.errorMessage =errorResponse.error?.error || 'Ha ocurrido un error inesperado.';
+        this.errorMessage = errorResponse.error?.error || 'Ha ocurrido un error inesperado.';
+        this.cdr.detectChanges(); 
       }
     });
   }
