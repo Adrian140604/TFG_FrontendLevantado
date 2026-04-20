@@ -19,7 +19,7 @@ export class Register {
 
   registerForm = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(100)]],
-    institutionalEmail: ['', [Validators.required, Validators.email, Validators.pattern('^[A-Za-z0-9._%+-]+@instituto\\.com$')]],
+    institutionalEmail: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4)]],
     repeatPassword: ['', [Validators.required]],
     course: [''],
