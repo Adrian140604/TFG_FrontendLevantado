@@ -57,6 +57,9 @@ export class AuthService {
       })
     );
   }
+  forgotPassword(institutionalEmail: string): Observable<string> {
+    return this.http.post(`${this.apiUrl}/forgot-password`, { institutionalEmail }, { responseType: 'text' });
+  }
 
   logout(): void {
     localStorage.removeItem('token');
