@@ -73,4 +73,12 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!this._user();
   }
+
+  resetPassword(token: string, newPassword: string, repeatPassword: string): Observable<string> {
+    return this.http.post(`${this.apiUrl}/reset-password`, {
+      token,
+      newPassword,
+      repeatPassword
+    }, { responseType: 'text' });
+  }
 }

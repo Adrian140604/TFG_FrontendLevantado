@@ -5,6 +5,7 @@ import { Login } from './shared/login/login';
 import { Books } from './features/books/books';
 import { authGuardGuard } from './core/guards/auth-guard-guard';
 import { ForgotPassowrd } from './shared/forgot-password/forgot-passowrd';
+import { ResetPassword } from './shared/reset-password/reset-password';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home' , pathMatch: 'full'},
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   {path:"libros",component:Books,canActivate: [authGuardGuard]},
   { path: 'forgot-password', component: ForgotPassowrd }
+  { path: 'reset-password', component: ResetPassword }
 
 
 ];
