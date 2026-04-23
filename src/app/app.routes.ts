@@ -14,7 +14,7 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   {path:"libros",component:Books,canActivate: [authGuardGuard]},
   { path: 'forgot-password', component: ForgotPassowrd },
-  { path: 'prueba-test', component: ResetPassword }
+  { path: 'reset-password', component: ResetPassword }
 
 
 ];
