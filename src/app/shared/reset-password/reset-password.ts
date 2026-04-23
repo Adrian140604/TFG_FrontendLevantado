@@ -29,6 +29,13 @@ export class ResetPassword {
   });
 
  
+   ngOnInit(): void {
+    this.token = this.route.snapshot.queryParamMap.get('token') ?? '';
+
+    if (!this.token) {
+      this.errorMessage = 'El enlace de restablecimiento no es válido.';
+    }
+  }
 
   submit(): void {
     this.errorMessage = '';
