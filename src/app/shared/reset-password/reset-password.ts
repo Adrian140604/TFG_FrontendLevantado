@@ -29,7 +29,7 @@ export class ResetPassword {
   });
 
  
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.token = this.route.snapshot.queryParamMap.get('token') ?? '';
 
     if (!this.token) {
