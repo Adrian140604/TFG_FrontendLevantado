@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: 'register', component: Register },
   { path: 'login', component: Login },
   {path:"libros",component:Books,canActivate: [authGuardGuard]},
-  { path: 'forgot-password', component: ForgotPassowrd }
+  { path: 'forgot-password', component: ForgotPassowrd },
   { path: 'reset-password', component: ResetPassword }
 
 
