@@ -41,3 +41,23 @@ export interface LoginRequest {
 export interface LoginResponse {
   token: string;
 }
+
+export interface Book {
+  bookId: number;
+  isbn: string;
+  title: string;
+  publisher: string;
+  publicationYear: number;
+  category: string;
+  authors: string[];
+}
+
+export interface CreateBookRequest {
+  isbn: string;
+  title: string;
+  publisher: string;
+  publicationYear: number;
+  category: string;
+  authors: string[];
+  copies: number;
+}

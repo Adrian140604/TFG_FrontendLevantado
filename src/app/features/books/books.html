@@ -1,1 +1,76 @@
-<p>books works!</p>
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Catálogo de libros</h2>
+      <p class="text-muted mb-0">Consulta los libros disponibles en la biblioteca.</p>
+      <a routerLink="/add-book" class="btn btn-primary">
+        Añadir libro
+      </a>
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+      <label for="search" class="form-label">Buscar libro</label>
+      <input
+        id="search"
+        type="text"
+        class="form-control"
+        placeholder="Buscar por título, ISBN, editorial, categoría o año..."
+        [(ngModel)]="searchText"
+        (input)="searchBooks()"
+      >
+    </div>
+  </div>
+
+  @if (isLoading) {
+    <div class="alert alert-info">
+      Cargando libros...
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (!isLoading && filteredBooks.length === 0) {
+    <div class="alert alert-warning">
+      No se encontraron libros.
+    </div>
+  }
+
+  @if (!isLoading && filteredBooks.length > 0) {
+    <div class="row g-3">
+      @for (book of filteredBooks; track book.bookId) {
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <h5 class="card-title">{{ book.title }}</h5>
+
+              <p class="card-text mb-1">
+                <strong>Autor/es:</strong> {{ book.authors.join(', ') }}
+              </p>
+              <p class="card-text mb-1">
+                <strong>ISBN:</strong> {{ book.isbn }}
+              </p>
+
+              <p class="card-text mb-1">
+                <strong>Editorial:</strong> {{ book.publisher }}
+              </p>
+
+              <p class="card-text mb-1">
+                <strong>Año:</strong> {{ book.publicationYear }}
+              </p>
+
+              <p class="card-text mb-0">
+                <strong>Categoría:</strong> {{ book.category }}
+              </p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
