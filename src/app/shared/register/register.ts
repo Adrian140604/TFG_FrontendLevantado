@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, inject, NgZone } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth-service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,7 @@ export class Register {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private cdr = inject(ChangeDetectorRef);
+  private router=inject(Router);
   errorMessage = '';
   successMessage = '';
   isSubmitting = false;
@@ -57,6 +59,9 @@ export class Register {
         this.successMessage = 'Usuario registrado correctamente.';
         this.isSubmitting = false;
         this.registerForm.reset();
+        setTimeout(() => {
+          this.router.navigate(['login']);
+        }, 1000);
       },
       error: (errorResponse) => {
         this.isSubmitting = false;
