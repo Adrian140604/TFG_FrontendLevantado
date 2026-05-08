@@ -58,6 +58,8 @@ export class AuthService {
     );
   }
   forgotPassword(institutionalEmail: string): Observable<string> {
+      console.log('Payload enviado al backend:', { institutionalEmail });
+
     return this.http.post(`${this.apiUrl}/forgot-password`, { institutionalEmail }, { responseType: 'text' });
   }
 

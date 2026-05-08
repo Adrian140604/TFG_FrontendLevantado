@@ -36,6 +36,7 @@ export class ForgotPassowrd {
     this.isSubmitting = true;
 
     const email = (this.forgotPasswordForm.value.institutionalEmail ?? '').trim().toLowerCase();
+    console.log('Email enviado:', email);
 
     this.authService.forgotPassword(email).subscribe({
       next: (response: string) => {
