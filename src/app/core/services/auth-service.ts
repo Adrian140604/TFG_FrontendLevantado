@@ -71,7 +71,10 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('token');
   }
-
+  canManageBooks(): boolean {
+    const role = this._user()?.role;
+    return role === 'ADMIN' || role === 'BIBLIOTECARIO';
+  }
   isAuthenticated(): boolean {
     return !!this._user();
   }

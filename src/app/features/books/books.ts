@@ -4,6 +4,7 @@ import { Book } from '../../../interfaces/types';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../core/services/auth-service';
 
 @Component({
   selector: 'app-books',
@@ -14,6 +15,7 @@ import { RouterLink } from '@angular/router';
 export class Books {
   private bookService = inject(BookService);
   private cdr = inject(ChangeDetectorRef);
+  authService=inject(AuthService);
 
   books: Book[] = [];
   filteredBooks: Book[] = [];

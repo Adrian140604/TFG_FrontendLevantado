@@ -3,9 +3,11 @@
     <div>
       <h2 class="mb-1">Catálogo de libros</h2>
       <p class="text-muted mb-0">Consulta los libros disponibles en la biblioteca.</p>
-      <a routerLink="/add-book" class="btn btn-primary">
-        Añadir libro
-      </a>
+      @if (authService.canManageBooks()) {
+        <a routerLink="/add-book" class="btn btn-primary">
+          Añadir libro
+        </a>
+      }
     </div>
   </div>
 
