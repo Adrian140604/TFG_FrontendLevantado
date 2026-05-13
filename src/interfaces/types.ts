@@ -12,6 +12,7 @@ export interface ApiError {
   error: string;
   path: string;
 }
+
 export interface User {
   userId: number;
   name: string;

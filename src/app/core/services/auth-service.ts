@@ -81,7 +81,13 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!this._user();
   }
+  canAddBooks(): boolean {
+  const role = this._user()?.role;
+  return role === 'ADMIN' || role === 'BIBLIOTECARIO';
+  }
 
+
+  
   resetPassword(token: string, newPassword: string, repeatPassword: string): Observable<string> {
     return this.http.post(`${this.apiUrl}/reset-password`, {
       token,

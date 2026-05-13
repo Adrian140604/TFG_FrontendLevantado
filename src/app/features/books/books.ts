@@ -1,11 +1,12 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { BookService } from '../../core/services/book-service';
-import { Book } from '../../../interfaces/types';
+import { Book, User } from '../../../interfaces/types';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth-service';
 import { LoanService } from '../../core/services/loan-service';
+import { UserService } from '../../core/services/user-service';
 
 @Component({
   selector: 'app-books',
@@ -16,12 +17,13 @@ import { LoanService } from '../../core/services/loan-service';
 export class Books {
   private bookService = inject(BookService);
   private loanService = inject(LoanService);
+  private userService = inject(UserService);
   private cdr = inject(ChangeDetectorRef);
-
   authService = inject(AuthService);
 
   books: Book[] = [];
   filteredBooks: Book[] = [];
+  users: User[] = [];
 
   searchText = '';
   errorMessage = '';
@@ -32,6 +34,7 @@ export class Books {
 
   constructor() {
     this.loadBooks();
+    this.loadUsers();
   }
 
   loadBooks(): void {
@@ -45,6 +48,23 @@ export class Books {
       error: () => {
         this.errorMessage = 'No se han podido cargar los libros.';
         this.isLoading = false;
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  loadUsers(): void {
+    if (!this.authService.canCreateLoans()) {
+      return;
+    }
+
+    this.userService.getUsers().subscribe({
+      next: (users: User[]) => {
+        this.users = users.filter(user => user.role === 'USER');
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.errorMessage = 'No se han podido cargar los usuarios.';
         this.cdr.detectChanges();
       }
     });
@@ -75,7 +95,7 @@ export class Books {
     const userId = this.loanUserIds[bookId];
 
     if (!userId) {
-      this.errorMessage = 'Debes indicar el ID del usuario.';
+      this.errorMessage = 'Debes seleccionar un usuario.';
       return;
     }
 
