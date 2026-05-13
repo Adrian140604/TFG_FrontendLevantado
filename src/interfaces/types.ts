@@ -61,3 +61,11 @@ export interface CreateBookRequest {
   authors: string[];
   copies: number;
 }
+
+export interface Loan {
+  loanId: number;
+  loanDate: string;
+  expectedReturnDate: string;
+  actualReturnDate: string | null;
+  status: string;
+}

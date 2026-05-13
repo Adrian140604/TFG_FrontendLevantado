@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth-service';
+import { LoanService } from '../../core/services/loan-service';
 
 @Component({
   selector: 'app-books',
@@ -14,15 +15,20 @@ import { AuthService } from '../../core/services/auth-service';
 })
 export class Books {
   private bookService = inject(BookService);
+  private loanService = inject(LoanService);
   private cdr = inject(ChangeDetectorRef);
-  authService=inject(AuthService);
+
+  authService = inject(AuthService);
 
   books: Book[] = [];
   filteredBooks: Book[] = [];
 
   searchText = '';
   errorMessage = '';
+  successMessage = '';
   isLoading = true;
+
+  loanUserIds: { [bookId: number]: number | null } = {};
 
   constructor() {
     this.loadBooks();
@@ -37,7 +43,7 @@ export class Books {
         this.cdr.detectChanges();
       },
       error: () => {
-        this.errorMessage = 'No se han podido cargar los libros';
+        this.errorMessage = 'No se han podido cargar los libros.';
         this.isLoading = false;
         this.cdr.detectChanges();
       }
@@ -60,5 +66,30 @@ export class Books {
       (book.publicationYear ?? '').toString().includes(text) ||
       (book.authors ?? []).some(author => author.toLowerCase().includes(text))
     );
+  }
+
+  createLoan(bookId: number): void {
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    const userId = this.loanUserIds[bookId];
+
+    if (!userId) {
+      this.errorMessage = 'Debes indicar el ID del usuario.';
+      return;
+    }
+
+    this.loanService.createLoan(bookId, userId).subscribe({
+      next: () => {
+        this.successMessage = 'Préstamo realizado correctamente.';
+        this.loanUserIds[bookId] = null;
+        this.loadBooks();
+        this.cdr.detectChanges();
+      },
+      error: (errorResponse) => {
+        this.errorMessage = errorResponse.error?.error || 'No se ha podido realizar el préstamo.';
+        this.cdr.detectChanges();
+      }
+    });
   }
 }

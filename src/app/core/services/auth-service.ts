@@ -75,6 +75,9 @@ export class AuthService {
     const role = this._user()?.role;
     return role === 'ADMIN' || role === 'BIBLIOTECARIO';
   }
+  canCreateLoans(): boolean {
+    return this._user()?.role === 'BIBLIOTECARIO';
+  }
   isAuthenticated(): boolean {
     return !!this._user();
   }
