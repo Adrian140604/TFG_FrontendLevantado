@@ -39,12 +39,19 @@ export class Books {
 
   loadBooks(): void {
     this.bookService.getBooks().subscribe({
-      next: (books: Book[]) => {
-        this.books = books;
-        this.filteredBooks = books;
-        this.isLoading = false;
-        this.cdr.detectChanges();
-      },
+    next: (books: Book[]) => {
+      this.books = books;
+      this.filteredBooks = books;
+
+      this.books.forEach(book => {
+        if (this.loanUserIds[book.bookId] === undefined) {
+          this.loanUserIds[book.bookId] = null;
+        }
+      });
+
+      this.isLoading = false;
+      this.cdr.detectChanges();
+    },
       error: () => {
         this.errorMessage = 'No se han podido cargar los libros.';
         this.isLoading = false;

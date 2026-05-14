@@ -91,7 +91,7 @@
                     class="form-select"
                     [(ngModel)]="loanUserIds[book.bookId]"
                   >
-                    <option [ngValue]="null" selected>Selecciona un usuario</option>
+                    <option [ngValue]="null" >Selecciona un usuario</option>
 
                     @for (user of users; track user.userId) {
                       <option [ngValue]="user.userId">
