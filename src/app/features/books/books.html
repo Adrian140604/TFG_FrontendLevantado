@@ -116,12 +116,17 @@
                   </select>
                 </div>
 
-                <button
+               <button
                   type="button"
                   class="btn btn-outline-primary w-100"
                   (click)="createLoan(book.bookId)"
-                >
-                  Realizar préstamo
+                  [disabled]="book.availableCopies === 0" >
+               
+                  @if (book.availableCopies > 0) {
+                    Realizar préstamo
+                  } @else {
+                    Sin ejemplares disponibles
+                  }
                 </button>
               }
             </div>

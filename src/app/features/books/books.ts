@@ -96,27 +96,52 @@ export class Books {
   }
 
   createLoan(bookId: number): void {
-    this.errorMessage = '';
-    this.successMessage = '';
+  this.errorMessage = '';
+  this.successMessage = '';
 
-    const userId = this.loanUserIds[bookId];
+  const userId = this.loanUserIds[bookId];
 
-    if (!userId) {
-      this.errorMessage = 'Debes seleccionar un usuario.';
-      return;
-    }
-
-    this.loanService.createLoan(bookId, userId).subscribe({
-      next: () => {
-        this.successMessage = 'Préstamo realizado correctamente.';
-        this.loanUserIds[bookId] = null;
-        this.loadBooks();
-        this.cdr.detectChanges();
-      },
-      error: (errorResponse) => {
-        this.errorMessage = errorResponse.error?.error || 'No se ha podido realizar el préstamo.';
-        this.cdr.detectChanges();
-      }
-    });
+  if (!userId) {
+    this.errorMessage = 'Debes seleccionar un usuario.';
+    return;
   }
+
+  this.loanService.createLoan(bookId, userId).subscribe({
+    next: () => {
+      this.successMessage = 'Préstamo realizado correctamente.';
+
+      this.loanUserIds[bookId] = null;
+
+      this.books = this.books.map(book => {
+        if (book.bookId === bookId) {
+          return {
+            ...book,
+            availableCopies: book.availableCopies - 1,
+            loanedCopies: book.loanedCopies + 1
+          };
+        }
+
+        return book;
+      });
+
+      this.filteredBooks = this.filteredBooks.map(book => {
+        if (book.bookId === bookId) {
+          return {
+            ...book,
+            availableCopies: book.availableCopies - 1,
+            loanedCopies: book.loanedCopies + 1
+          };
+        }
+
+        return book;
+      });
+
+      this.cdr.detectChanges();
+    },
+    error: (errorResponse) => {
+      this.errorMessage = errorResponse.error?.error || 'No se ha podido realizar el préstamo.';
+      this.cdr.detectChanges();
+    }
+  });
+}
 }
