@@ -80,6 +80,21 @@
               <p class="card-text mb-3">
                 <strong>Categoría:</strong> {{ book.category }}
               </p>
+              <p class="card-text mb-1">
+                <strong>Categoría:</strong> {{ book.category }}
+              </p>
+
+              <p class="card-text mb-1">
+                <strong>Ejemplares totales:</strong> {{ book.totalCopies }}
+              </p>
+
+              <p class="card-text mb-1">
+                <strong>Disponibles:</strong> {{ book.availableCopies }}
+              </p>
+
+              <p class="card-text mb-3">
+                <strong>Prestados:</strong> {{ book.loanedCopies }}
+              </p>
 
               @if (authService.canCreateLoans()) {
                 <hr>

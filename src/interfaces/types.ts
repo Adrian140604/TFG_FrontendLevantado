@@ -51,6 +51,9 @@ export interface Book {
   publicationYear: number;
   category: string;
   authors: string[];
+  totalCopies: number;
+  availableCopies: number;
+  loanedCopies: number;
 }
 
 export interface CreateBookRequest {
