@@ -24,6 +24,12 @@
           <a class="nav-link" routerLink="/libros">Libros</a>
         </li>
       </ul>
+      <ul class="navbar-nav me-auto">
+        <a routerLink="/mis-prestamos" class="nav-link">
+          Mis préstamos
+        </a>
+      </ul>
+
 
       <ul class="navbar-nav ms-auto align-items-center">
         @if (authService.user()) {
