@@ -28,9 +28,19 @@
             Mis préstamos
           </a>
         </li>
+        @if (authService.canAddBooks()) {
+          <a routerLink="/prestamos" class="nav-link">
+            Préstamos
+          </a>
+        }
+        @if (authService.canViewAllLoans()) {
+          <a routerLink="/prestamos" class="nav-link">
+            Préstamos
+          </a>
+        }
         
-       
       </ul>
+
         
       <ul class="navbar-nav ms-auto align-items-center">
         @if (authService.user()) {

@@ -1,0 +1,80 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Todos los préstamos</h2>
+      <p class="text-muted mb-0">
+        Consulta los préstamos registrados en la biblioteca.
+      </p>
+    </div>
+
+    <a routerLink="/libros" class="btn btn-outline-secondary">
+      Volver al catálogo
+    </a>
+  </div>
+
+  @if (isLoading) {
+    <div class="alert alert-info">
+      Cargando préstamos...
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (!isLoading && loans.length === 0) {
+    <div class="alert alert-warning">
+      No hay préstamos registrados.
+    </div>
+  }
+
+  @if (!isLoading && loans.length > 0) {
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th>Lector</th>
+                <th>Email</th>
+                <th>Libro</th>
+                <th>Ejemplar</th>
+                <th>Fecha salida</th>
+                <th>Fecha límite</th>
+                <th>Fecha devolución</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (loan of loans; track loan.loanId) {
+                <tr>
+                  <td>{{ loan.userName }}</td>
+                  <td>{{ loan.userEmail }}</td>
+                  <td>{{ loan.bookTitle }}</td>
+                  <td>#{{ loan.bookCopyId }}</td>
+                  <td>{{ loan.loanDate }}</td>
+                  <td>{{ loan.expectedReturnDate }}</td>
+                  <td>
+                    @if (loan.actualReturnDate) {
+                      {{ loan.actualReturnDate }}
+                    } @else {
+                      Pendiente
+                    }
+                  </td>
+                  <td>
+                    <span [class]="getStatusClass(loan.status)">
+                      {{ loan.status }}
+                    </span>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  }
+</div>

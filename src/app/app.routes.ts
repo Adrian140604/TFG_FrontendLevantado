@@ -9,6 +9,7 @@ import { ResetPassword } from './shared/reset-password/reset-password';
 import { AddBook } from './shared/add-book/add-book';
 import { adminGuardGuard } from './core/guards/admin-guard-guard';
 import { MyLoans } from './shared/my-loans/my-loans';
+import { AllLoans } from './shared/all-loans/all-loans';
 
 export const routes: Routes = [
 
@@ -21,5 +22,6 @@ export const routes: Routes = [
   { path: 'forgot-password', component: ForgotPassowrd },
   { path: 'reset-password', component: ResetPassword },
   { path: 'mis-prestamos', component: MyLoans, canActivate: [authGuardGuard] },
+  { path: 'prestamos', component: AllLoans, canActivate: [authGuardGuard] },
 
 ];
