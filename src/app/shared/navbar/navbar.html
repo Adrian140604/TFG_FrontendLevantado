@@ -21,16 +21,16 @@
 
       <ul class="navbar-nav me-auto">
         <li>
+          <a routerLink="/mis-prestamos" class="nav-link">
+            Mis préstamos
+          </a>
+        </li>
+        
+        <li>
           <a class="nav-link" routerLink="/libros">Libros</a>
         </li>
       </ul>
-        <a routerLink="/mis-prestamos" class="nav-link">
-          Mis préstamos
-        </a>
-     
-       
-
-
+        
       <ul class="navbar-nav ms-auto align-items-center">
         @if (authService.user()) {
           <li class="nav-item">
