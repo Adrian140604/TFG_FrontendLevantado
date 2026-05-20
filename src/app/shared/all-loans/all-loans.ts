@@ -1,10 +1,11 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { LoanService } from '../../core/services/loan-service';
 import { Loan } from '../../../interfaces/types';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-all-loans',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './all-loans.html',
   styleUrl: './all-loans.css',
 })
