@@ -15,6 +15,7 @@ export class AllLoans {
 
   loans: Loan[] = [];
   errorMessage = '';
+  successMessage = '';
   isLoading = true;
 
   constructor() {
@@ -31,6 +32,27 @@ export class AllLoans {
       error: (errorResponse) => {
         this.errorMessage = errorResponse.error?.error || 'No se han podido cargar los préstamos.';
         this.isLoading = false;
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  returnLoan(loanId: number): void {
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    this.loanService.returnLoan(loanId).subscribe({
+      next: (updatedLoan: Loan) => {
+        this.successMessage = 'Devolución registrada correctamente.';
+
+        this.loans = this.loans.map(loan =>
+          loan.loanId === updatedLoan.loanId ? updatedLoan : loan
+        );
+
+        this.cdr.detectChanges();
+      },
+      error: (errorResponse) => {
+        this.errorMessage = errorResponse.error?.error || 'No se ha podido registrar la devolución.';
         this.cdr.detectChanges();
       }
     });

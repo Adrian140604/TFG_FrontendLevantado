@@ -20,4 +20,9 @@ export class LoanService {
   getAllLoans(): Observable<Loan[]> {
     return this.http.get<Loan[]>(this.apiUrl);
   }
+
+  returnLoan(loanId: number): Observable<Loan> {
+    return this.http.put<Loan>(`${this.apiUrl}/${loanId}/return`, {});
+  }
+  
 }
