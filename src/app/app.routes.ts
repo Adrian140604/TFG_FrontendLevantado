@@ -11,6 +11,7 @@ import { adminGuardGuard } from './core/guards/admin-guard-guard';
 import { MyLoans } from './shared/my-loans/my-loans';
 import { AllLoans } from './shared/all-loans/all-loans';
 import { MySanctions } from './shared/my-sanctions/my-sanctions';
+import { AllSanctions } from './shared/all-sanctions/all-sanctions';
 
 export const routes: Routes = [
 
@@ -25,6 +26,6 @@ export const routes: Routes = [
   { path: 'mis-prestamos', component: MyLoans, canActivate: [authGuardGuard] },
   { path: 'prestamos', component: AllLoans, canActivate: [authGuardGuard] },
   { path: 'mis-sanciones', component: MySanctions, canActivate: [authGuardGuard] },
-  
+  { path: 'sanciones', component: AllSanctions, canActivate: [authGuardGuard] },
 
 ];

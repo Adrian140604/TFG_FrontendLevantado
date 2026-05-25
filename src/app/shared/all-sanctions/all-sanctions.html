@@ -1,0 +1,78 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Sanciones</h2>
+      <p class="text-muted mb-0">
+        Consulta las sanciones registradas en la biblioteca.
+      </p>
+    </div>
+
+    <a routerLink="/libros" class="btn btn-outline-secondary">
+      Volver al catálogo
+    </a>
+  </div>
+
+  @if (isLoading) {
+    <div class="alert alert-info">
+      Cargando sanciones...
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (!isLoading && sanctions.length === 0) {
+    <div class="alert alert-success">
+      No hay sanciones registradas.
+    </div>
+  }
+
+  @if (!isLoading && sanctions.length > 0) {
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th>Lector</th>
+                <th>Email</th>
+                <th>Libro</th>
+                <th>Préstamo</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Días retraso</th>
+                <th>Días sanción</th>
+                <th>Motivo</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (sanction of sanctions; track sanction.sanctionId) {
+                <tr>
+                  <td>{{ sanction.userName }}</td>
+                  <td>{{ sanction.userEmail }}</td>
+                  <td>{{ sanction.bookTitle }}</td>
+                  <td>#{{ sanction.loanId }}</td>
+                  <td>{{ sanction.startDate }}</td>
+                  <td>{{ sanction.endDate }}</td>
+                  <td>{{ sanction.delayDays }}</td>
+                  <td>{{ sanction.sanctionDays }}</td>
+                  <td>{{ sanction.reason }}</td>
+                  <td>
+                    <span [class]="getStatusClass(sanction.active)">
+                      {{ getStatusText(sanction.active) }}
+                    </span>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  }
+</div>

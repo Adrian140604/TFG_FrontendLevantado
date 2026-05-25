@@ -33,6 +33,11 @@
             Préstamos
           </a>
         }
+        @if (authService.canViewSanctions()) {
+          <a routerLink="/sanciones" class="nav-link">
+            Sanciones
+          </a>
+        }
         <a routerLink="/mis-sanciones" class="nav-link">
           Mis sanciones
         </a>

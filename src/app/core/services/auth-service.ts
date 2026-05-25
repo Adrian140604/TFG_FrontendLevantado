@@ -91,6 +91,10 @@ export class AuthService {
     const role = this._user()?.role?.trim().toUpperCase();
     return role === 'ADMIN' || role === 'BIBLIOTECARIO';
   }
+  canViewSanctions(): boolean {
+    const role = this._user()?.role?.trim().toUpperCase();
+    return role === 'ADMIN' || role === 'BIBLIOTECARIO';
+  }
 
   
   resetPassword(token: string, newPassword: string, repeatPassword: string): Observable<string> {
