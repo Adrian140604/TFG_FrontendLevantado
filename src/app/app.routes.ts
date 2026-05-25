@@ -10,6 +10,7 @@ import { AddBook } from './shared/add-book/add-book';
 import { adminGuardGuard } from './core/guards/admin-guard-guard';
 import { MyLoans } from './shared/my-loans/my-loans';
 import { AllLoans } from './shared/all-loans/all-loans';
+import { MySanctions } from './shared/my-sanctions/my-sanctions';
 
 export const routes: Routes = [
 
@@ -23,5 +24,7 @@ export const routes: Routes = [
   { path: 'reset-password', component: ResetPassword },
   { path: 'mis-prestamos', component: MyLoans, canActivate: [authGuardGuard] },
   { path: 'prestamos', component: AllLoans, canActivate: [authGuardGuard] },
+  { path: 'mis-sanciones', component: MySanctions, canActivate: [authGuardGuard] },
+  
 
 ];

@@ -56,6 +56,21 @@ export interface Book {
   loanedCopies: number;
 }
 
+export interface Sanction {
+  sanctionId: number;
+  userId: number;
+  userName: string;
+  userEmail: string;
+  loanId: number;
+  bookTitle: string;
+  startDate: string;
+  endDate: string;
+  delayDays: number;
+  sanctionDays: number;
+  reason: string;
+  active: boolean;
+}
+
 export interface CreateBookRequest {
   isbn: string;
   title: string;
