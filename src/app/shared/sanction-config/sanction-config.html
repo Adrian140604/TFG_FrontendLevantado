@@ -1,0 +1,76 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Configuración de sanciones</h2>
+      <p class="text-muted mb-0">
+        Define cuántos días de sanción se aplican por cada día de retraso.
+      </p>
+    </div>
+
+    <a routerLink="/sanciones" class="btn btn-outline-secondary">
+      Volver a sanciones
+    </a>
+  </div>
+
+  @if (successMessage) {
+    <div class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="alert alert-info">
+      Cargando configuración...
+    </div>
+  }
+
+  @if (!isLoading) {
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <div class="mb-3">
+          <label class="form-label">
+            Días de sanción por cada día de retraso
+          </label>
+
+          <input
+            type="number"
+            class="form-control"
+            min="1"
+            [(ngModel)]="sanctionDaysPerDelayDay"
+          >
+
+          <small class="text-muted">
+            Ejemplo: si introduces 2, un lector con 3 días de retraso recibirá 6 días de sanción.
+          </small>
+        </div>
+
+        @if (config) {
+          <div class="alert alert-light border">
+            Configuración actual:
+            <strong>{{ config.sanctionDaysPerDelayDay }}</strong>
+            día/s de sanción por cada día de retraso.
+          </div>
+        }
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="isSubmitting"
+          (click)="saveConfig()"
+        >
+          @if (!isSubmitting) {
+            Guardar configuración
+          } @else {
+            Guardando...
+          }
+        </button>
+      </div>
+    </div>
+  }
+</div>

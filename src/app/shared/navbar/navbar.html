@@ -38,6 +38,11 @@
             Sanciones
           </a>
         }
+        @if (authService.canConfigureSanctions()) {
+          <a routerLink="/configuracion-sanciones" class="nav-link">
+            Configuración sanciones
+          </a>
+        }
         <a routerLink="/mis-sanciones" class="nav-link">
           Mis sanciones
         </a>

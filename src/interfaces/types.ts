@@ -97,3 +97,12 @@ export interface Loan {
 
   status: string;
 }
+export interface SanctionConfig {
+  sanctionConfigId: number;
+  sanctionDaysPerDelayDay: number;
+  active: boolean;
+}
+
+export interface UpdateSanctionConfigRequest {
+  sanctionDaysPerDelayDay: number;
+}
