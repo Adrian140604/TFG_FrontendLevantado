@@ -43,6 +43,11 @@
             Configuración sanciones
           </a>
         }
+        @if (authService.canReserveBooks()) {
+          <a routerLink="/mis-reservas" class="nav-link">
+            Mis reservas
+          </a>
+        }
         <a routerLink="/mis-sanciones" class="nav-link">
           Mis sanciones
         </a>

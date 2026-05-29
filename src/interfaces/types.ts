@@ -106,3 +106,20 @@ export interface SanctionConfig {
 export interface UpdateSanctionConfigRequest {
   sanctionDaysPerDelayDay: number;
 }
+
+export interface Reservation {
+  reservationId: number;
+
+  userId: number;
+  userName: string;
+  userEmail: string;
+
+  bookId: number;
+  bookTitle: string;
+  bookIsbn: string;
+
+  reservationDate: string;
+  expirationDate: string;
+
+  status: string;
+}

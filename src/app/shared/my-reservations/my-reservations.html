@@ -1,0 +1,68 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Mis reservas</h2>
+      <p class="text-muted mb-0">
+        Consulta tus reservas activas y pasadas.
+      </p>
+    </div>
+
+    <a routerLink="/libros" class="btn btn-outline-secondary">
+      Volver al catálogo
+    </a>
+  </div>
+
+  @if (isLoading) {
+    <div class="alert alert-info">
+      Cargando reservas...
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (!isLoading && reservations.length === 0) {
+    <div class="alert alert-warning">
+      No tienes reservas registradas.
+    </div>
+  }
+
+  @if (!isLoading && reservations.length > 0) {
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th>Libro</th>
+                <th>ISBN</th>
+                <th>Fecha reserva</th>
+                <th>Expira</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (reservation of reservations; track reservation.reservationId) {
+                <tr>
+                  <td>{{ reservation.bookTitle }}</td>
+                  <td>{{ reservation.bookIsbn }}</td>
+                  <td>{{ reservation.reservationDate }}</td>
+                  <td>{{ reservation.expirationDate }}</td>
+                  <td>
+                    <span [class]="getStatusClass(reservation.status)">
+                      {{ reservation.status }}
+                    </span>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  }
+</div>

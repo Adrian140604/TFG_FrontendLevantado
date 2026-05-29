@@ -4,9 +4,6 @@
       <h2 class="mb-1">Catálogo de libros</h2>
       <p class="text-muted mb-0">Consulta los libros disponibles en la biblioteca.</p>
     </div>
-    <p class="text-danger">
-  Rol actual: {{ authService.user()?.role }}
-</p>
 
     @if (authService.canAddBooks()) {
       <a routerLink="/add-book" class="btn btn-primary">
@@ -77,9 +74,6 @@
                 <strong>Año:</strong> {{ book.publicationYear }}
               </p>
 
-              <p class="card-text mb-3">
-                <strong>Categoría:</strong> {{ book.category }}
-              </p>
               <p class="card-text mb-1">
                 <strong>Categoría:</strong> {{ book.category }}
               </p>
@@ -96,6 +90,23 @@
                 <strong>Prestados:</strong> {{ book.loanedCopies }}
               </p>
 
+              @if (authService.canReserveBooks()) {
+                <hr>
+
+                <button
+                  type="button"
+                  class="btn btn-outline-success w-100"
+                  (click)="reserveBook(book.bookId)"
+                  [disabled]="book.availableCopies === 0"
+                >
+                  @if (book.availableCopies > 0) {
+                    Reservar libro
+                  } @else {
+                    Sin ejemplares disponibles
+                  }
+                </button>
+              }
+
               @if (authService.canCreateLoans()) {
                 <hr>
 
@@ -106,7 +117,7 @@
                     class="form-select"
                     [(ngModel)]="loanUserIds[book.bookId]"
                   >
-                    <option [ngValue]="null" >Selecciona un usuario</option>
+                    <option [ngValue]="null">Selecciona un usuario</option>
 
                     @for (user of users; track user.userId) {
                       <option [ngValue]="user.userId">
@@ -116,12 +127,12 @@
                   </select>
                 </div>
 
-               <button
+                <button
                   type="button"
                   class="btn btn-outline-primary w-100"
                   (click)="createLoan(book.bookId)"
-                  [disabled]="book.availableCopies === 0" >
-               
+                  [disabled]="book.availableCopies === 0"
+                >
                   @if (book.availableCopies > 0) {
                     Realizar préstamo
                   } @else {

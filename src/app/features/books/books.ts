@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth-service';
 import { LoanService } from '../../core/services/loan-service';
 import { UserService } from '../../core/services/user-service';
+import { ReservationService } from '../../core/services/reservation-service';
 
 @Component({
   selector: 'app-books',
@@ -18,8 +19,10 @@ export class Books {
   private bookService = inject(BookService);
   private loanService = inject(LoanService);
   private userService = inject(UserService);
+  private reservationService = inject(ReservationService);
   private cdr = inject(ChangeDetectorRef);
   authService = inject(AuthService);
+  
 
   books: Book[] = [];
   filteredBooks: Book[] = [];
@@ -38,6 +41,7 @@ export class Books {
   }
 
   loadBooks(): void {
+    
     this.bookService.getBooks().subscribe({
     next: (books: Book[]) => {
       this.books = books;
@@ -94,6 +98,21 @@ export class Books {
       (book.authors ?? []).some(author => author.toLowerCase().includes(text))
     );
   }
+  reserveBook(bookId: number): void {
+  this.errorMessage = '';
+  this.successMessage = '';
+
+  this.reservationService.createReservation(bookId).subscribe({
+    next: () => {
+      this.successMessage = 'Reserva realizada correctamente. Recuerda recoger el libro antes de 24 horas.';
+      this.cdr.detectChanges();
+    },
+    error: (errorResponse) => {
+      this.errorMessage = errorResponse.error?.error || 'No se ha podido realizar la reserva.';
+      this.cdr.detectChanges();
+    }
+  });
+}
 
   createLoan(bookId: number): void {
   this.errorMessage = '';
