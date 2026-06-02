@@ -116,4 +116,8 @@ export class AuthService {
       repeatPassword
     }, { responseType: 'text' });
   }
+  canManageCategories(): boolean {
+    const role = this._user()?.role?.trim().toUpperCase();
+    return role === 'ADMIN';
+  }
 }

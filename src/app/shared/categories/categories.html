@@ -1,0 +1,144 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Categorías</h2>
+      <p class="text-muted mb-0">
+        Gestiona las categorías y géneros de los libros.
+      </p>
+    </div>
+
+    <a routerLink="/libros" class="btn btn-outline-secondary">
+      Volver al catálogo
+    </a>
+  </div>
+
+  @if (successMessage) {
+    <div class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+      <h5 class="mb-3">Añadir categoría</h5>
+
+      <div class="row g-2">
+        <div class="col-12 col-md-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ej: Narrativa"
+            [(ngModel)]="newCategoryName"
+          >
+        </div>
+
+        <div class="col-12 col-md-3 d-grid">
+          <button
+            type="button"
+            class="btn btn-primary"
+            [disabled]="isSubmitting"
+            (click)="createCategory()"
+          >
+            @if (!isSubmitting) {
+              Añadir
+            } @else {
+              Añadiendo...
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @if (isLoading) {
+    <div class="alert alert-info">
+      Cargando categorías...
+    </div>
+  }
+
+  @if (!isLoading && categories.length === 0) {
+    <div class="alert alert-warning">
+      No hay categorías registradas.
+    </div>
+  }
+
+  @if (!isLoading && categories.length > 0) {
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th class="text-end">Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (category of categories; track category.categoryId) {
+                <tr>
+                  <td>#{{ category.categoryId }}</td>
+
+                  <td>
+                    @if (editingCategoryId === category.categoryId) {
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="editingCategoryName"
+                      >
+                    } @else {
+                      {{ category.name }}
+                    }
+                  </td>
+
+                  <td class="text-end">
+                    @if (editingCategoryId === category.categoryId) {
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-success me-2"
+                        (click)="updateCategory()"
+                      >
+                        Guardar
+                      </button>
+
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        (click)="cancelEdit()"
+                      >
+                        Cancelar
+                      </button>
+                    } @else {
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-primary me-2"
+                        (click)="startEdit(category)"
+                      >
+                        Editar
+                      </button>
+
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-danger"
+                        (click)="deleteCategory(category.categoryId)"
+                      >
+                        Eliminar
+                      </button>
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  }
+</div>

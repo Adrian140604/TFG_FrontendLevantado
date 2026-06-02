@@ -34,5 +34,6 @@ export const routes: Routes = [
   { path: 'configuracion-sanciones', component: SanctionConfigComponent, canActivate: [authGuardGuard] },
   { path: 'mis-reservas', component: MyReservations, canActivate: [authGuardGuard] },
   { path: 'reservas', component: AllReservations, canActivate: [authGuardGuard] },
+  { path: 'categorias', component: Categories, canActivate: [authGuardGuard] },
 
 ];

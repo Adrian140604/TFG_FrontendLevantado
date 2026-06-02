@@ -59,6 +59,14 @@ export interface Book {
   catalogStatus: string;
 }
 
+export interface Category {
+  categoryId: number;
+  name: string;
+}
+
+export interface CategoryRequest {
+  name: string;
+}
 export interface Sanction {
   sanctionId: number;
   userId: number;
