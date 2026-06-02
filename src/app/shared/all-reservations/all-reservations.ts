@@ -14,6 +14,7 @@ export class AllReservations {
 
   reservations: Reservation[] = [];
   errorMessage = '';
+  successMessage = '';
   isLoading = true;
 
   constructor() {
@@ -30,6 +31,29 @@ export class AllReservations {
       error: (errorResponse) => {
         this.errorMessage = errorResponse.error?.error || 'No se han podido cargar las reservas.';
         this.isLoading = false;
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  pickupReservation(reservationId: number): void {
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    this.reservationService.pickupReservation(reservationId).subscribe({
+      next: (updatedReservation: Reservation) => {
+        this.successMessage = 'Reserva recogida correctamente. Se ha creado el préstamo.';
+
+        this.reservations = this.reservations.map(reservation =>
+          reservation.reservationId === updatedReservation.reservationId
+            ? updatedReservation
+            : reservation
+        );
+
+        this.cdr.detectChanges();
+      },
+      error: (errorResponse) => {
+        this.errorMessage = errorResponse.error?.error || 'No se ha podido recoger la reserva.';
         this.cdr.detectChanges();
       }
     });

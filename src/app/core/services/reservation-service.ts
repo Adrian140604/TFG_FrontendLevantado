@@ -21,4 +21,8 @@ export class ReservationService {
   getAllReservations(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(this.apiUrl);
   }
+
+  pickupReservation(reservationId: number): Observable<Reservation> {
+    return this.http.put<Reservation>(`${this.apiUrl}/${reservationId}/pickup`, {});
+  }
 }
