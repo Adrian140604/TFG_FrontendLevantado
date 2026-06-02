@@ -48,6 +48,11 @@
             Mis reservas
           </a>
         }
+        @if (authService.canViewAllReservations()) {
+          <a routerLink="/reservas" class="nav-link">
+            Reservas
+          </a>
+        }
         <a routerLink="/mis-sanciones" class="nav-link">
           Mis sanciones
         </a>
