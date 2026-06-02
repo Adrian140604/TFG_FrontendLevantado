@@ -105,6 +105,7 @@ export class Books {
   this.reservationService.createReservation(bookId).subscribe({
     next: () => {
       this.successMessage = 'Reserva realizada correctamente. Recuerda recoger el libro antes de 24 horas.';
+      this.loadBooks();
       this.cdr.detectChanges();
     },
     error: (errorResponse) => {
