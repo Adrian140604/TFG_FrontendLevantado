@@ -15,6 +15,7 @@ import { AllSanctions } from './shared/all-sanctions/all-sanctions';
 import { SanctionConfigComponent } from './shared/sanction-config/sanction-configComponent';
 import { MyReservations } from './shared/my-reservations/my-reservations';
 import { AllReservations } from './shared/all-reservations/all-reservations';
+import { Categories } from './shared/categories/categories';
 
 
 export const routes: Routes = [
@@ -35,5 +36,6 @@ export const routes: Routes = [
   { path: 'mis-reservas', component: MyReservations, canActivate: [authGuardGuard] },
   { path: 'reservas', component: AllReservations, canActivate: [authGuardGuard] },
   { path: 'categorias', component: Categories, canActivate: [authGuardGuard] },
+
 
 ];
