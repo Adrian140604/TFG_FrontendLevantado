@@ -89,6 +89,21 @@
               <p class="card-text mb-3">
                 <strong>Prestados:</strong> {{ book.loanedCopies }}
               </p>
+              <p class="card-text mb-1">
+                <strong>Reservados:</strong> {{ book.reservedCopies }}
+              </p>
+
+              <p class="card-text mb-3">
+                <strong>Estado:</strong>
+                <span
+                  class="badge"
+                  [class.bg-success]="book.catalogStatus === 'DISPONIBLE'"
+                  [class.bg-warning]="book.catalogStatus === 'RESERVADO'"
+                  [class.bg-danger]="book.catalogStatus === 'PRESTADO'"
+                >
+                  {{ book.catalogStatus }}
+                </span>
+              </p>
 
               @if (authService.canReserveBooks()) {
                 <hr>

@@ -51,9 +51,12 @@ export interface Book {
   publicationYear: number;
   category: string;
   authors: string[];
+
   totalCopies: number;
   availableCopies: number;
   loanedCopies: number;
+  reservedCopies: number;
+  catalogStatus: string;
 }
 
 export interface Sanction {
