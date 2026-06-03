@@ -61,8 +61,8 @@
                   <td>{{ reservation.userEmail }}</td>
                   <td>{{ reservation.bookTitle }}</td>
                   <td>{{ reservation.bookIsbn }}</td>
-                  <td>{{ reservation.reservationDate }}</td>
-                  <td>{{ reservation.expirationDate }}</td>
+                  <td>{{ reservation.reservationDate | date:'dd/MM/yyyy HH:mm' }}</td>
+                  <td>{{ reservation.expirationDate | date:'dd/MM/yyyy HH:mm' }}</td>
                   <td>
                     <span [class]="getStatusClass(reservation.status)">
                       {{ reservation.status }}

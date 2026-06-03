@@ -1,10 +1,11 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { ReservationService } from '../../core/services/reservation-service';
 import { Reservation } from '../../../interfaces/types';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-all-reservations',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './all-reservations.html',
   styleUrl: './all-reservations.css',
 })
