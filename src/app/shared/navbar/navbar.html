@@ -66,6 +66,11 @@
         <a routerLink="/mis-sanciones" class="nav-link">
           Mis sanciones
         </a>
+        @if (authService.canManageLibrarians()) {
+          <a routerLink="/bibliotecarios" class="nav-link">
+            Bibliotecarios
+          </a>
+        }
         
       </ul>
 

@@ -17,6 +17,7 @@ import { MyReservations } from './shared/my-reservations/my-reservations';
 import { AllReservations } from './shared/all-reservations/all-reservations';
 import { Categories } from './shared/categories/categories';
 import { BookCopies } from './shared/book-copies/book-copies';
+import { Librarians } from './shared/librarians/librarians';
 
 
 export const routes: Routes = [
@@ -38,6 +39,7 @@ export const routes: Routes = [
   { path: 'reservas', component: AllReservations, canActivate: [authGuardGuard] },
   { path: 'categorias', component: Categories, canActivate: [authGuardGuard] },
   { path: 'ejemplares', component: BookCopies, canActivate: [authGuardGuard] },
+  { path: 'bibliotecarios', component: Librarians, canActivate: [authGuardGuard] },
 
 
 ];

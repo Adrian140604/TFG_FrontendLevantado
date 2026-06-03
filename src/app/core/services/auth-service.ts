@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { JwtPayload, LoginRequest, RegisterRequest, LoginResponse, User } from '../../../interfaces/types';
+import { JwtPayload, LoginRequest, RegisterRequest, LoginResponse, User, CreateLibrarianRequest } from '../../../interfaces/types';
 import { Observable, tap } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 
@@ -123,5 +123,12 @@ export class AuthService {
   canManageCopies(): boolean {
     const role = this._user()?.role?.trim().toUpperCase();
     return role === 'ADMIN' || role === 'BIBLIOTECARIO';
+  }
+  createLibrarian(request: CreateLibrarianRequest): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/librarians`, request);
+  } 
+  canManageLibrarians(): boolean {
+    const role = this._user()?.role?.trim().toUpperCase();
+    return role === 'ADMIN';
   }
 }

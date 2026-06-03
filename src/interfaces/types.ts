@@ -57,6 +57,14 @@ export interface UpdateBookCopyStatusRequest {
   statusNote: string;
 }
 
+export interface CreateLibrarianRequest {
+  name: string;
+  institutionalEmail: string;
+  password: string;
+  repeatPassword: string;
+  department: string;
+}
+
 export interface Book {
   bookId: number;
   isbn: string;

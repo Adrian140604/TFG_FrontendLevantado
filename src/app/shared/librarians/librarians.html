@@ -1,0 +1,122 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Alta de bibliotecarios</h2>
+      <p class="text-muted mb-0">
+        Crea cuentas de personal bibliotecario.
+      </p>
+    </div>
+
+    <a routerLink="/libros" class="btn btn-outline-secondary">
+      Volver al catálogo
+    </a>
+  </div>
+
+  @if (successMessage) {
+    <div class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <form [formGroup]="librarianForm" (ngSubmit)="submit()">
+        <div class="mb-3">
+          <label class="form-label">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Nombre del bibliotecario"
+          >
+
+          @if (hasError('name', 'required')) {
+            <small class="text-danger">El nombre es obligatorio.</small>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Correo electrónico</label>
+          <input
+            type="email"
+            class="form-control"
+            formControlName="institutionalEmail"
+            placeholder="bibliotecario@gmail.com"
+          >
+
+          @if (hasError('institutionalEmail', 'required')) {
+            <small class="text-danger">El email es obligatorio.</small>
+          }
+
+          @if (hasError('institutionalEmail', 'email')) {
+            <small class="text-danger">El formato del email no es válido.</small>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Departamento</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="department"
+            placeholder="Ej: Biblioteca"
+          >
+
+          @if (hasError('department', 'required')) {
+            <small class="text-danger">El departamento es obligatorio.</small>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Contraseña</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Mínimo 6 caracteres"
+          >
+
+          @if (hasError('password', 'required')) {
+            <small class="text-danger">La contraseña es obligatoria.</small>
+          }
+
+          @if (hasError('password', 'minlength')) {
+            <small class="text-danger">La contraseña debe tener al menos 6 caracteres.</small>
+          }
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Repetir contraseña</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="repeatPassword"
+            placeholder="Repite la contraseña"
+          >
+
+          @if (hasError('repeatPassword', 'required')) {
+            <small class="text-danger">Debes repetir la contraseña.</small>
+          }
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="isSubmitting"
+        >
+          @if (!isSubmitting) {
+            Crear bibliotecario
+          } @else {
+            Creando...
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
