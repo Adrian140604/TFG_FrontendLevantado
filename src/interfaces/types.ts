@@ -43,6 +43,20 @@ export interface LoginResponse {
   token: string;
 }
 
+export interface BookCopy {
+  copyId: number;
+  bookId: number;
+  bookTitle: string;
+  status: string;
+  active: boolean;
+  statusNote: string | null;
+}
+
+export interface UpdateBookCopyStatusRequest {
+  status: string;
+  statusNote: string;
+}
+
 export interface Book {
   bookId: number;
   isbn: string;

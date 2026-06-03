@@ -57,7 +57,12 @@
           <a routerLink="/categorias" class="nav-link">
             Categorías
           </a>
-          }
+        }
+        @if (authService.canManageCopies()) {
+          <a routerLink="/ejemplares" class="nav-link">
+            Ejemplares
+          </a>
+        }
         <a routerLink="/mis-sanciones" class="nav-link">
           Mis sanciones
         </a>
