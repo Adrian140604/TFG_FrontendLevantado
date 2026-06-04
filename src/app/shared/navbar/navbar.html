@@ -71,6 +71,11 @@
             Bibliotecarios
           </a>
         }
+       @if (authService.canViewStats()) {
+          <a routerLink="/estadisticas" class="nav-link">
+            Estadísticas
+          </a>
+        }
         
       </ul>
 

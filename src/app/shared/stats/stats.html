@@ -1,0 +1,124 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Estadísticas</h2>
+      <p class="text-muted mb-0">
+        Resumen general del estado de la biblioteca.
+      </p>
+    </div>
+
+    <a routerLink="/libros" class="btn btn-outline-secondary">
+      Volver al catálogo
+    </a>
+  </div>
+
+  @if (isLoading) {
+    <div class="alert alert-info">
+      Cargando estadísticas...
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (!isLoading && stats) {
+    <div class="row g-3">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm border-0 stat-card">
+          <div class="card-body">
+            <p class="text-muted mb-1">Libros totales</p>
+            <h3 class="mb-0">{{ stats.totalBooks }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm border-0 stat-card">
+          <div class="card-body">
+            <p class="text-muted mb-1">Usuarios registrados</p>
+            <h3 class="mb-0">{{ stats.totalUsers }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm border-0 stat-card">
+          <div class="card-body">
+            <p class="text-muted mb-1">Préstamos totales</p>
+            <h3 class="mb-0">{{ stats.totalLoans }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm border-0 stat-card">
+          <div class="card-body">
+            <p class="text-muted mb-1">Préstamos activos</p>
+            <h3 class="mb-0">{{ stats.activeLoans }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm border-0 stat-card">
+          <div class="card-body">
+            <p class="text-muted mb-1">Reservas totales</p>
+            <h3 class="mb-0">{{ stats.totalReservations }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm border-0 stat-card">
+          <div class="card-body">
+            <p class="text-muted mb-1">Reservas activas</p>
+            <h3 class="mb-0">{{ stats.activeReservations }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm border-0 stat-card">
+          <div class="card-body">
+            <p class="text-muted mb-1">Sanciones activas</p>
+            <h3 class="mb-0">{{ stats.activeSanctions }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm border-0 stat-card">
+          <div class="card-body">
+            <p class="text-muted mb-1">Ejemplares totales</p>
+            <h3 class="mb-0">{{ stats.totalCopies }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card shadow-sm border-0 mt-4">
+      <div class="card-body">
+        <h5 class="mb-3">Estado de ejemplares</h5>
+
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <div class="border rounded p-3">
+              <p class="text-muted mb-1">Disponibles</p>
+              <h4 class="mb-0">{{ stats.availableCopies }}</h4>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="border rounded p-3">
+              <p class="text-muted mb-1">Prestados</p>
+              <h4 class="mb-0">{{ stats.loanedCopies }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

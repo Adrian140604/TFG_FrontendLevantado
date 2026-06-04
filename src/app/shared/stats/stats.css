@@ -1,0 +1,11 @@
+.card {
+  border-radius: 12px;
+}
+
+.stat-card {
+  min-height: 120px;
+}
+
+.stat-card h3 {
+  font-weight: 700;
+}

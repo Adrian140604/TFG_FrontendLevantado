@@ -13,6 +13,11 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl);
   }
+  disableUser(userId: number): Observable<string> {
+    return this.http.put(`${this.apiUrl}/${userId}/disable`, {}, {
+      responseType: 'text'
+    });
+  }
   
 }
 

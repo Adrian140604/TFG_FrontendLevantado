@@ -1,0 +1,86 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Usuarios</h2>
+      <p class="text-muted mb-0">
+        Gestiona los usuarios registrados en la biblioteca.
+      </p>
+    </div>
+
+    <a routerLink="/libros" class="btn btn-outline-secondary">
+      Volver al catálogo
+    </a>
+  </div>
+
+  @if (successMessage) {
+    <div class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="alert alert-info">
+      Cargando usuarios...
+    </div>
+  }
+
+  @if (!isLoading && users.length === 0) {
+    <div class="alert alert-warning">
+      No hay usuarios registrados.
+    </div>
+  }
+
+  @if (!isLoading && users.length > 0) {
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Curso</th>
+                <th>Departamento</th>
+                <th class="text-end">Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (user of users; track user.userId) {
+                <tr>
+                  <td>#{{ user.userId }}</td>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.institutionalEmail }}</td>
+                  <td>{{ user.role }}</td>
+                  <td>{{ user.course || '-' }}</td>
+                  <td>{{ user.department || '-' }}</td>
+                  <td class="text-end">
+                    @if (user.role !== 'ADMIN') {
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-danger"
+                        (click)="disableUser(user.userId)"
+                      >
+                        Dar de baja
+                      </button>
+                    } @else {
+                      <span class="text-muted">Sin acciones</span>
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  }
+</div>

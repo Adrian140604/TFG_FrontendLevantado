@@ -18,6 +18,8 @@ import { AllReservations } from './shared/all-reservations/all-reservations';
 import { Categories } from './shared/categories/categories';
 import { BookCopies } from './shared/book-copies/book-copies';
 import { Librarians } from './shared/librarians/librarians';
+import { Users } from './shared/users/users';
+import { Stats } from './shared/stats/stats';
 
 
 export const routes: Routes = [
@@ -40,6 +42,8 @@ export const routes: Routes = [
   { path: 'categorias', component: Categories, canActivate: [authGuardGuard] },
   { path: 'ejemplares', component: BookCopies, canActivate: [authGuardGuard] },
   { path: 'bibliotecarios', component: Librarians, canActivate: [authGuardGuard] },
+  { path: 'usuarios', component: Users, canActivate: [authGuardGuard] },
+  { path: 'estadisticas', component: Stats, canActivate: [authGuardGuard] },
 
 
 ];

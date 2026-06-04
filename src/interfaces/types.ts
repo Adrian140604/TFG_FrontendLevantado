@@ -65,6 +65,19 @@ export interface CreateLibrarianRequest {
   department: string;
 }
 
+export interface Stats {
+  totalBooks: number;
+  totalUsers: number;
+  totalLoans: number;
+  activeLoans: number;
+  totalReservations: number;
+  activeReservations: number;
+  activeSanctions: number;
+  totalCopies: number;
+  availableCopies: number;
+  loanedCopies: number;
+}
+
 export interface Book {
   bookId: number;
   isbn: string;
