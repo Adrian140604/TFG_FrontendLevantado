@@ -2,10 +2,12 @@ import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { UserService } from '../../core/services/user-service';
 import { User } from '../../../interfaces/types';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-users',
-  imports: [],
+  imports: [CommonModule, RouterLink],
   templateUrl: './users.html',
   styleUrl: './users.css',
 })
@@ -51,7 +53,11 @@ export class Users {
       next: (response: string) => {
         this.successMessage = response || 'Usuario dado de baja correctamente.';
 
-        this.users = this.users.filter(user => user.userId !== userId);
+        this.users = this.users.map(user =>
+          user.userId === userId
+            ? { ...user, enabled: false }
+            : user
+        );
 
         this.cdr.detectChanges();
       },

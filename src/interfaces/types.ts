@@ -20,6 +20,7 @@ export interface User {
   role: string;
   course: string | null;
   department: string | null;
+  enabled: boolean;
 }
 
 export interface JwtPayload {

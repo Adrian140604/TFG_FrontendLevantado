@@ -63,7 +63,7 @@
                   <td>{{ user.course || '-' }}</td>
                   <td>{{ user.department || '-' }}</td>
                   <td class="text-end">
-                    @if (user.role !== 'ADMIN') {
+                    @if (user.role !== 'ADMIN' && user.enabled) {
                       <button
                         type="button"
                         class="btn btn-sm btn-outline-danger"
