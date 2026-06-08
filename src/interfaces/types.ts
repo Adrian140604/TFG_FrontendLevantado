@@ -173,6 +173,7 @@ export interface Reservation {
 
 export interface UpdateProfileRequest {
   name: string;
+  institutionalEmail: string;
   course: string | null;
   department: string | null;
 }

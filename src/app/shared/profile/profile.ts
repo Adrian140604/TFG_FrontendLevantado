@@ -21,6 +21,7 @@ export class Profile {
   name = '';
   course = '';
   department = '';
+  institutionalEmail = '';
 
   errorMessage = '';
   successMessage = '';
@@ -54,9 +55,15 @@ export class Profile {
     this.successMessage = '';
 
     const name = this.name.trim();
+    const institutionalEmail = this.institutionalEmail.trim().toLowerCase();
 
     if (!name) {
       this.errorMessage = 'El nombre es obligatorio.';
+      return;
+    }
+
+    if (!institutionalEmail) {
+      this.errorMessage = 'El correo es obligatorio.';
       return;
     }
 
@@ -64,15 +71,17 @@ export class Profile {
 
     this.userService.updateMyProfile({
       name,
+      institutionalEmail,
       course: this.course.trim() || null,
       department: this.department.trim() || null
     }).subscribe({
       next: (updatedUser: User) => {
         this.user = updatedUser;
         this.name = updatedUser.name;
+        this.institutionalEmail = updatedUser.institutionalEmail;
         this.course = updatedUser.course ?? '';
         this.department = updatedUser.department ?? '';
-        this.successMessage = 'Perfil actualizado correctamente.';
+        this.successMessage = 'Perfil actualizado correctamente. Si has cambiado el correo, vuelve a iniciar sesión.';
         this.isSubmitting = false;
         this.cdr.detectChanges();
       },
