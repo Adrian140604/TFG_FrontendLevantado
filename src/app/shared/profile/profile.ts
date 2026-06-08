@@ -35,10 +35,13 @@ export class Profile {
   loadProfile(): void {
     this.userService.getMyProfile().subscribe({
       next: (user: User) => {
-      this.name = user.name;
-      this.institutionalEmail = user.institutionalEmail;
-      this.course = user.course ?? '';
-      this.department = user.department ?? '';
+        this.user = user;
+
+        this.name = user.name;
+        this.institutionalEmail = user.institutionalEmail;
+        this.course = user.course ?? '';
+        this.department = user.department ?? '';
+
         this.isLoading = false;
         this.cdr.detectChanges();
       },
@@ -49,7 +52,6 @@ export class Profile {
       }
     });
   }
-
   saveProfile(): void {
     this.errorMessage = '';
     this.successMessage = '';
