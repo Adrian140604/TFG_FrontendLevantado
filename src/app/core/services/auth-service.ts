@@ -25,7 +25,7 @@ export class AuthService {
             const { userId, name, institutionalEmail, role, department, course } =
               jwtDecode<JwtPayload>(token);
 
-            this._user.set({ userId, name, institutionalEmail, role, department, course });
+            this._user.set({userId,name,institutionalEmail,role,department,course,enabled: true});
           } catch {
             this.logout();
           }
@@ -53,7 +53,7 @@ export class AuthService {
           jwtDecode<JwtPayload>(response.token);
 
         localStorage.setItem('token', response.token);
-        this._user.set({ userId, name, institutionalEmail, role, department, course });
+        this._user.set({userId,name,institutionalEmail,role,department,course,enabled: true});
       })
     );
   }
