@@ -76,6 +76,12 @@
             Estadísticas
           </a>
         }
+        @if (authService.isAuthenticated()) {
+          <a routerLink="/perfil" class="nav-link">
+            Mi perfil
+          </a>
+        }
+
         
         
       </ul>
@@ -89,12 +95,7 @@
               {{ authService.user()?.name }}
             </span>
           </li>
-          @if (authService.isAuthenticated()) {
-            <a routerLink="/perfil" class="nav-link">
-              Mi perfil
-            </a>
-          }
-
+        
           <li class="nav-item ms-2">
             <button class="btn btn-outline-light btn-sm" (click)="logout()">
               Cerrar sesión
