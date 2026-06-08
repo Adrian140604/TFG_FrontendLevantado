@@ -12,15 +12,21 @@
     </a>
   </div>
 
-  @if (isLoading) {
-    <div class="alert alert-info">
-      Cargando préstamos...
+  @if (successMessage) {
+    <div class="alert alert-success">
+      {{ successMessage }}
     </div>
   }
 
   @if (errorMessage) {
     <div class="alert alert-danger">
       {{ errorMessage }}
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="alert alert-info">
+      Cargando préstamos...
     </div>
   }
 
@@ -42,6 +48,8 @@
                 <th>Fecha límite</th>
                 <th>Fecha devolución</th>
                 <th>Estado</th>
+                <th>Prórroga</th>
+                <th>Acciones</th>
               </tr>
             </thead>
 
@@ -49,19 +57,45 @@
               @for (loan of loans; track loan.loanId) {
                 <tr>
                   <td>{{ loan.bookTitle }}</td>
-                  <td>{{ loan.loanDate }}</td>
-                  <td>{{ loan.expectedReturnDate }}</td>
+
+                  <td>{{ loan.loanDate | date:'dd/MM/yyyy' }}</td>
+
+                  <td>{{ loan.expectedReturnDate | date:'dd/MM/yyyy' }}</td>
+
                   <td>
                     @if (loan.actualReturnDate) {
-                      {{ loan.actualReturnDate }}
+                      {{ loan.actualReturnDate | date:'dd/MM/yyyy' }}
                     } @else {
                       Pendiente
                     }
                   </td>
+
                   <td>
                     <span [class]="getStatusClass(loan.status)">
                       {{ loan.status }}
                     </span>
+                  </td>
+
+                  <td>
+                    @if (loan.extended) {
+                      <span class="badge bg-success">Sí</span>
+                    } @else {
+                      <span class="badge bg-secondary">No</span>
+                    }
+                  </td>
+
+                  <td>
+                    @if (loan.status === 'ACTIVO' && !loan.extended) {
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-primary"
+                        (click)="extendLoan(loan.loanId)"
+                      >
+                        Solicitar prórroga
+                      </button>
+                    } @else {
+                      <span class="text-muted">Sin acciones</span>
+                    }
                   </td>
                 </tr>
               }

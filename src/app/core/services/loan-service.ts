@@ -24,5 +24,8 @@ export class LoanService {
   returnLoan(loanId: number): Observable<Loan> {
     return this.http.put<Loan>(`${this.apiUrl}/${loanId}/return`, {});
   }
+  extendLoan(loanId: number): Observable<Loan> {
+    return this.http.put<Loan>(`${this.apiUrl}/${loanId}/extend`, {});
+  }
   
 }

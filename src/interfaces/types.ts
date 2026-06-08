@@ -177,3 +177,22 @@ export interface UpdateProfileRequest {
   course: string | null;
   department: string | null;
 }
+
+export interface Loan {
+  loanId: number;
+
+  userId: number;
+  userName: string;
+  userEmail: string;
+
+  bookId: number;
+  bookTitle: string;
+  bookCopyId: number;
+
+  loanDate: string;
+  expectedReturnDate: string;
+  actualReturnDate: string | null;
+
+  status: string;
+  extended: boolean;
+}
