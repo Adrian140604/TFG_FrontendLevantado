@@ -3,10 +3,11 @@ import { LoanService } from '../../core/services/loan-service';
 import { Loan } from '../../../interfaces/types';
 import { RouterLink } from "@angular/router";
 import { HttpErrorResponse } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-my-loans',
-  imports: [RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './my-loans.html',
   styleUrl: './my-loans.css',
 })
