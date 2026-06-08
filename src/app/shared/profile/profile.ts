@@ -35,10 +35,10 @@ export class Profile {
   loadProfile(): void {
     this.userService.getMyProfile().subscribe({
       next: (user: User) => {
-        this.user = user;
-        this.name = user.name;
-        this.course = user.course ?? '';
-        this.department = user.department ?? '';
+      this.name = user.name;
+      this.institutionalEmail = user.institutionalEmail;
+      this.course = user.course ?? '';
+      this.department = user.department ?? '';
         this.isLoading = false;
         this.cdr.detectChanges();
       },
