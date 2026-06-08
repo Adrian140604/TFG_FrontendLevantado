@@ -77,16 +77,23 @@
           </a>
         }
         
+        
       </ul>
 
         
       <ul class="navbar-nav ms-auto align-items-center">
+        
         @if (authService.user()) {
           <li class="nav-item">
             <span class="nav-link disabled text-light">
               {{ authService.user()?.name }}
             </span>
           </li>
+          @if (authService.isAuthenticated()) {
+            <a routerLink="/perfil" class="nav-link">
+              Mi perfil
+            </a>
+          }
 
           <li class="nav-item ms-2">
             <button class="btn btn-outline-light btn-sm" (click)="logout()">

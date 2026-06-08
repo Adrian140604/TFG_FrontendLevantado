@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../../../interfaces/types';
+import { UpdateProfileRequest, User } from '../../../interfaces/types';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +17,13 @@ export class UserService {
     return this.http.put(`${this.apiUrl}/${userId}/disable`, {}, {
       responseType: 'text'
     });
+  }
+  getMyProfile(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/profile`);
+  }
+
+  updateMyProfile(request: UpdateProfileRequest): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/profile`, request);
   }
   
 }

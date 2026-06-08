@@ -1,0 +1,100 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Mi perfil</h2>
+      <p class="text-muted mb-0">
+        Consulta y actualiza tus datos personales.
+      </p>
+    </div>
+
+    <a routerLink="/libros" class="btn btn-outline-secondary">
+      Volver al catálogo
+    </a>
+  </div>
+
+  @if (successMessage) {
+    <div class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="alert alert-info">
+      Cargando perfil...
+    </div>
+  }
+
+  @if (!isLoading && user) {
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <div class="mb-3">
+          <label class="form-label">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="name"
+          >
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Correo electrónico</label>
+          <input
+            type="email"
+            class="form-control"
+            [value]="user.institutionalEmail"
+            disabled
+          >
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Rol</label>
+          <input
+            type="text"
+            class="form-control"
+            [value]="user.role"
+            disabled
+          >
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Curso</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ej: 2DAW"
+            [(ngModel)]="course"
+          >
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Departamento</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ej: Informática"
+            [(ngModel)]="department"
+          >
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="isSubmitting"
+          (click)="saveProfile()"
+        >
+          @if (!isSubmitting) {
+            Guardar cambios
+          } @else {
+            Guardando...
+          }
+        </button>
+      </div>
+    </div>
+  }
+</div>

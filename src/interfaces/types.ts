@@ -170,3 +170,9 @@ export interface Reservation {
 
   status: string;
 }
+
+export interface UpdateProfileRequest {
+  name: string;
+  course: string | null;
+  department: string | null;
+}
