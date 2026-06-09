@@ -6,5 +6,27 @@ h2 {
 
 .card { border-top: 3px solid #1e4d2b !important; }
 
-th { white-space: nowrap; }
-td { vertical-align: middle; }
+/* Suficiente para las 7 columnas de mis préstamos */
+.table {
+  min-width: 750px;
+}
+
+th {
+  white-space: nowrap;
+}
+
+td {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Columna acciones */
+td:last-child,
+th:last-child {
+  min-width: 170px;
+}
+
+td .btn-sm {
+  font-size: 0.82rem;
+  padding: 0.45rem 0.95rem;
+}

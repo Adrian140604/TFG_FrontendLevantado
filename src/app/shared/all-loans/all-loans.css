@@ -6,23 +6,28 @@ h2 {
 
 .card { border-top: 3px solid #1e4d2b !important; }
 
-/* Fuerza anchura mínima para que la tabla no se comprima */
+/* Anchura mínima para que no se compriman las 9 columnas */
 .table {
-  min-width: 860px;
+  min-width: 1200px;
 }
 
-th { white-space: nowrap; }
-td { vertical-align: middle; white-space: nowrap; }
+th {
+  white-space: nowrap;
+}
 
-/* Columna de acciones más holgada */
+td {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Columna acciones generosa */
 td:last-child,
 th:last-child {
-  min-width: 170px;
+  min-width: 190px;
 }
 
-/* Botón de acción más visible */
+/* Botón de acción más cómodo */
 td .btn-sm {
   font-size: 0.82rem;
-  padding: 0.45rem 0.9rem;
-  white-space: nowrap;
+  padding: 0.45rem 0.95rem;
 }
