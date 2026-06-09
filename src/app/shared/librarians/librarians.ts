@@ -23,7 +23,7 @@ export class Librarians {
   librarianForm = this.fb.group({
     name: ['', [Validators.required]],
     institutionalEmail: ['', [Validators.required, Validators.email]],
-    department: ['', [Validators.required]],
+    department: [{ value: 'Biblioteca', disabled: true }, [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     repeatPassword: ['', [Validators.required]]
   });
@@ -50,7 +50,7 @@ export class Librarians {
     const request = {
       name: this.librarianForm.value.name ?? '',
       institutionalEmail: (this.librarianForm.value.institutionalEmail ?? '').trim().toLowerCase(),
-      department: this.librarianForm.value.department ?? '',
+      department: this.librarianForm.getRawValue().department ?? 'Biblioteca',
       password,
       repeatPassword
     };

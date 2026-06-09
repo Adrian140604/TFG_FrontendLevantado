@@ -74,12 +74,13 @@
 
         <div class="mb-4">
           <label class="form-label">Departamento</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Ej: Informática"
-            [(ngModel)]="department"
-          >
+          <select class="form-select" [(ngModel)]="department">
+            <option value="">No pertenezco a ningún departamento</option>
+            <option value="informatica">Informática</option>
+            <option value="matematicas">Matemáticas</option>
+            <option value="lengua">Lengua</option>
+            <option value="ingles">Inglés</option>
+          </select>
         </div>
 
         <button
