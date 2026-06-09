@@ -1,7 +1,49 @@
+/* Page header */
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  color: #143320;
+}
+
+/* Book cards */
 .card {
-  border-radius: 12px;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+
+.card:hover {
+  box-shadow: 0 6px 24px rgba(30,77,43,0.13) !important;
+  transform: translateY(-2px);
 }
 
 .card-title {
-  font-weight: 700;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #143320;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  font-size: 0.875rem;
+  margin-bottom: 0.375rem !important;
+}
+
+.card-text strong {
+  color: #1c1c1e;
+  font-weight: 500;
+}
+
+hr {
+  border-color: #ede8e0;
+  margin: 0.875rem 0;
+}
+
+/* Search card */
+.card.shadow-sm.border-0.mb-4 {
+  background: #fff !important;
+}
+
+/* Status badges in cards */
+.badge {
+  font-size: 0.72rem;
 }

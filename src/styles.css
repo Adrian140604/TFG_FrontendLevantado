@@ -1,28 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===== DESIGN SYSTEM — BIBLIOTECA ESCOLAR ===== */
+
 :root {
-  --bs-primary: #2e7d32;
-  --bs-primary-rgb: 46,125,50;
-}
-:root {
-  --bs-primary: #2e7d32;
-  --bs-primary-rgb: 46,125,50;
+  --lib-primary:       #1e4d2b;
+  --lib-primary-light: #2d6b3f;
+  --lib-primary-dark:  #143320;
+  --lib-accent:        #b8943f;
+  --lib-accent-light:  #d4af5c;
 
-  --bs-success: #4caf50;
-  --bs-success-rgb: 76,175,80;
+  --lib-bg:            #f5f2eb;
+  --lib-surface:       #ffffff;
+  --lib-surface-alt:   #ede9e1;
 
-  --bs-dark: #1b5e20;
-}
-body {
-  background-color: #f8f9fa;
+  --lib-text:          #1c1c1e;
+  --lib-text-muted:    #6b6560;
+  --lib-text-light:    #9e9792;
+
+  --lib-border:        #ddd6cb;
+  --lib-border-light:  #ede8e0;
+
+  --lib-success:       #2d7d46;
+  --lib-warning:       #b87333;
+  --lib-danger:        #b83232;
+  --lib-info:          #2563ab;
+
+  --lib-shadow-sm:     0 1px 4px rgba(0,0,0,0.06);
+  --lib-shadow:        0 2px 12px rgba(0,0,0,0.09);
+  --lib-shadow-lg:     0 4px 24px rgba(0,0,0,0.13);
+
+  --lib-radius:        8px;
+  --lib-radius-lg:     12px;
+
+  /* Bootstrap overrides */
+  --bs-primary:        #1e4d2b;
+  --bs-primary-rgb:    30, 77, 43;
+  --bs-success:        #2d7d46;
+  --bs-success-rgb:    45, 125, 70;
+  --bs-dark:           #143320;
 }
 
-/* títulos */
-h1, h2, h3 {
-  color: #212529;
-}
+/* ===== BASE ===== */
 html, body {
   height: 100%;
   margin: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--lib-bg);
+  color: var(--lib-text);
+  line-height: 1.65;
+  font-size: 0.9375rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--lib-primary-dark);
 }
 
 app-root {
@@ -30,3 +62,256 @@ app-root {
   flex-direction: column;
   min-height: 100vh;
 }
+
+/* ===== MAIN LAYOUT ===== */
+.container.mt-4 {
+  margin-top: 2rem !important;
+  padding-bottom: 3rem;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--lib-surface) !important;
+  border: 1px solid var(--lib-border-light) !important;
+  border-radius: var(--lib-radius-lg) !important;
+  box-shadow: var(--lib-shadow) !important;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: var(--lib-radius);
+  padding: 0.5rem 1.25rem;
+  transition: all 0.18s ease;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary {
+  background-color: var(--lib-primary);
+  border-color: var(--lib-primary);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--lib-primary-light);
+  border-color: var(--lib-primary-light);
+  box-shadow: 0 4px 12px rgba(30,77,43,0.3);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.btn-primary:disabled {
+  background-color: var(--lib-primary);
+  border-color: var(--lib-primary);
+  opacity: 0.55;
+}
+
+.btn-outline-secondary {
+  border-color: var(--lib-border);
+  color: var(--lib-text-muted);
+  background: transparent;
+}
+.btn-outline-secondary:hover {
+  background-color: var(--lib-surface-alt);
+  border-color: var(--lib-border);
+  color: var(--lib-text);
+}
+
+.btn-outline-primary {
+  border-color: var(--lib-primary);
+  color: var(--lib-primary);
+  background: transparent;
+}
+.btn-outline-primary:hover:not(:disabled) {
+  background-color: var(--lib-primary);
+  color: #fff;
+}
+
+.btn-outline-success {
+  border-color: var(--lib-success);
+  color: var(--lib-success);
+  background: transparent;
+}
+.btn-outline-success:hover:not(:disabled) {
+  background-color: var(--lib-success);
+  color: #fff;
+}
+
+.btn-outline-danger {
+  border-color: var(--lib-danger);
+  color: var(--lib-danger);
+  background: transparent;
+}
+.btn-outline-danger:hover:not(:disabled) {
+  background-color: var(--lib-danger);
+  color: #fff;
+}
+
+.btn-outline-light {
+  border-color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.88);
+}
+.btn-outline-light:hover {
+  background-color: rgba(255,255,255,0.14);
+  color: #fff;
+  border-color: rgba(255,255,255,0.9);
+}
+
+.btn-success {
+  background-color: var(--lib-success);
+  border-color: var(--lib-success);
+  color: #fff;
+}
+.btn-success:hover:not(:disabled) {
+  background-color: #256039;
+  border-color: #256039;
+}
+
+/* ===== FORMS ===== */
+.form-control,
+.form-select {
+  border-color: var(--lib-border);
+  border-radius: var(--lib-radius);
+  padding: 0.5625rem 0.875rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  color: var(--lib-text);
+  background-color: var(--lib-surface);
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--lib-primary);
+  box-shadow: 0 0 0 3px rgba(30,77,43,0.12);
+  outline: none;
+}
+
+.form-control:disabled {
+  background-color: var(--lib-surface-alt);
+  color: var(--lib-text-muted);
+}
+
+.form-label {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--lib-text);
+  margin-bottom: 0.375rem;
+}
+
+small.text-muted {
+  font-size: 0.8rem;
+  color: var(--lib-text-muted) !important;
+}
+
+small.text-danger {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ===== TABLES ===== */
+.table {
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+.table thead th {
+  background-color: var(--lib-primary);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.775rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: none;
+  padding: 0.8rem 1rem;
+  white-space: nowrap;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--lib-border-light);
+  transition: background-color 0.12s;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(30, 77, 43, 0.04);
+}
+
+.table tbody td {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  color: var(--lib-text);
+  border: none;
+}
+
+.table-responsive {
+  border-radius: var(--lib-radius);
+  overflow: hidden;
+}
+
+/* ===== BADGES ===== */
+.badge {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.72rem;
+  padding: 0.35em 0.75em;
+  border-radius: 50rem;
+  letter-spacing: 0.03em;
+}
+
+.bg-success   { background-color: var(--lib-success)  !important; }
+.bg-danger    { background-color: var(--lib-danger)   !important; }
+.bg-warning   { background-color: var(--lib-warning)  !important; color: #fff !important; }
+.bg-secondary { background-color: #8a8480             !important; }
+.bg-info      { background-color: var(--lib-info)     !important; }
+
+/* ===== ALERTS ===== */
+.alert {
+  border-radius: var(--lib-radius);
+  border: none;
+  padding: 0.875rem 1.125rem;
+  font-size: 0.9rem;
+}
+
+.alert-success {
+  background-color: rgba(45,125,70,0.1);
+  color: #1d6336;
+  border-left: 3px solid var(--lib-success);
+}
+
+.alert-danger {
+  background-color: rgba(184,50,50,0.08);
+  color: #9c2020;
+  border-left: 3px solid var(--lib-danger);
+}
+
+.alert-warning {
+  background-color: rgba(184,115,51,0.1);
+  color: #8a5520;
+  border-left: 3px solid var(--lib-warning);
+}
+
+.alert-info {
+  background-color: rgba(37,99,171,0.08);
+  color: #1a4e87;
+  border-left: 3px solid var(--lib-info);
+}
+
+.alert-light {
+  background-color: var(--lib-surface-alt);
+  color: var(--lib-text);
+  border: 1px solid var(--lib-border) !important;
+}
+
+/* ===== TEXT UTILITIES ===== */
+.text-muted { color: var(--lib-text-muted) !important; }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar          { width: 6px; height: 6px; }
+::-webkit-scrollbar-track    { background: var(--lib-bg); }
+::-webkit-scrollbar-thumb    { background: #a0b8a8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--lib-primary); }

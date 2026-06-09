@@ -1,11 +1,17 @@
-.card {
-  border-radius: 12px;
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  color: #143320;
 }
 
-th {
-  white-space: nowrap;
+h5 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #1e4d2b;
 }
 
-td {
-  vertical-align: middle;
-}
+.card { border-top: 3px solid #1e4d2b !important; }
+
+.card.mb-4 { border-top: 3px solid #b8943f !important; }
+
+th { white-space: nowrap; }
+td { vertical-align: middle; }

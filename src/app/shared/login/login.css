@@ -1,0 +1,29 @@
+.card {
+  border-top: 3px solid var(--lib-primary, #1e4d2b) !important;
+}
+
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.65rem;
+  color: #143320;
+}
+
+.card-body {
+  padding: 2rem 2.25rem !important;
+}
+
+a {
+  color: var(--lib-primary, #1e4d2b);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--lib-accent, #b8943f);
+  text-decoration: underline;
+}
+
+.d-grid .btn-primary {
+  padding: 0.65rem;
+  font-size: 0.95rem;
+}

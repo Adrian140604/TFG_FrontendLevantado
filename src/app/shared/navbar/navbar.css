@@ -1,21 +1,104 @@
-.custom-navbar {
-  background: linear-gradient(90deg, #1b5e20, #2e7d32);
+.lib-navbar {
+  background: linear-gradient(135deg, #143320 0%, #1e4d2b 55%, #235530 100%);
+  border-bottom: 2px solid rgba(184, 148, 63, 0.35);
+  padding: 0.55rem 0;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
 }
-.btn-outline-light:hover {
-  background-color: #ffffff;
-  color: #212529;
-}
+
+/* Brand */
 .navbar-logo {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   object-fit: cover;
-  border-radius: 50%; /* esto lo hace redondo */
-  border: 2px solid white; /* opcional, queda muy bien */
-}
-.navbar-logo {
-  transition: transform 0.2s ease;
+  border-radius: 50%;
+  border: 2px solid rgba(184, 148, 63, 0.55);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
 }
 
 .navbar-logo:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
+  border-color: #d4af5c;
+}
+
+.brand-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
+.brand-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.62rem;
+  color: rgba(212, 175, 92, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+}
+
+.lib-navbar .navbar-brand {
+  text-decoration: none;
+}
+
+/* Nav links */
+.lib-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.825rem;
+  font-weight: 400;
+  padding: 0.42rem 0.68rem !important;
+  border-radius: 6px;
+  transition: color 0.14s, background-color 0.14s;
+  white-space: nowrap;
+}
+
+.lib-navbar .nav-link:hover {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.lib-navbar .nav-link.active {
+  color: #d4e8c2 !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* User display name */
+.nav-user {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+  padding: 0 0.5rem;
+}
+
+/* Registro accent button */
+.btn-accent {
+  background-color: #b8943f;
+  color: #fff !important;
+  border: 1px solid #b8943f;
+  border-radius: 7px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.38rem 1rem;
+  transition: background-color 0.18s, border-color 0.18s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-accent:hover {
+  background-color: #d4af5c;
+  border-color: #d4af5c;
+}
+
+/* Mobile toggler */
+.lib-navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.35);
+  padding: 0.3rem 0.6rem;
+}
+
+.lib-navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 2px rgba(184, 148, 63, 0.4);
 }

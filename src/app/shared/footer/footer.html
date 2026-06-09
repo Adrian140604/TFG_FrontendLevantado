@@ -1,23 +1,18 @@
-<footer class="bg-dark text-light mt-5 pt-4 pb-2">
-  <div class="container text-center">
-
-    <h5 class="mb-3">Biblioteca Escolar</h5>
-
-    <p class="mb-2">
-      Sistema de gestión de biblioteca para centros educativos
-    </p>
-
-    <div class="mb-3">
-      <a href="#" class="text-light me-3">Inicio</a>
-      <a href="#" class="text-light me-3">Libros</a>
-      <a href="#" class="text-light me-3">Contacto</a>
+<footer class="lib-footer">
+  <div class="container">
+    <div class="lib-footer__top">
+      <div class="lib-footer__brand">
+        <span class="lib-footer__title">Biblioteca Escolar</span>
+        <p class="lib-footer__desc">Sistema de gestión de biblioteca para centros educativos</p>
+      </div>
+      <div class="lib-footer__links">
+        <a routerLink="/" class="lib-footer__link">Inicio</a>
+        <a routerLink="/libros" class="lib-footer__link">Libros</a>
+        <a routerLink="/mis-prestamos" class="lib-footer__link">Préstamos</a>
+      </div>
     </div>
-
-    <hr class="bg-light">
-
-    <p class="mb-0">
-      © 2026 Biblioteca Escolar - TFG Adrián
-    </p>
-
+    <div class="lib-footer__bottom">
+      <span>© 2026 Biblioteca Escolar &mdash; TFG Adrián</span>
+    </div>
   </div>
 </footer>

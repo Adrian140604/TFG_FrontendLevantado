@@ -1,3 +1,23 @@
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  color: #143320;
+}
+
+h5 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #1e4d2b;
+}
+
 .card {
-  border-radius: 12px;
+  border-top: 3px solid #b8943f !important;
+}
+
+.card-body {
+  padding: 2rem 2.25rem !important;
+}
+
+.badge.bg-info {
+  font-size: 0.875rem;
+  padding: 0.5em 1em;
 }

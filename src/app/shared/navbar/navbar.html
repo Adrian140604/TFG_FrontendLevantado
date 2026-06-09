@@ -1,8 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-  <div class="container-fluid">
+<nav class="lib-navbar navbar navbar-expand-lg">
+  <div class="container-fluid px-4">
 
-    <a class="navbar-brand d-flex align-items-center ms-3" routerLink="/">
-      <img src="assets/Logo.png" alt="Logo" class="navbar-logo">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img src="Logo.svg" alt="Logo" class="navbar-logo">
+      <div class="brand-text ms-2">
+        <div class="brand-name">Biblioteca</div>
+        <div class="brand-tagline">Escolar</div>
+      </div>
     </a>
 
     <button
@@ -19,93 +23,113 @@
 
     <div class="collapse navbar-collapse" id="mainNavbar">
 
-      <ul class="navbar-nav me-auto">
-        <li>
-          <a class="nav-link" routerLink="/libros">Libros</a>
+      <ul class="navbar-nav me-auto ms-3">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/libros" routerLinkActive="active">Libros</a>
         </li>
-        <li>
-          <a routerLink="/mis-prestamos" class="nav-link">
+        <li class="nav-item">
+          <a routerLink="/mis-prestamos" class="nav-link" routerLinkActive="active">
             Mis préstamos
           </a>
         </li>
         @if (authService.canAddBooks()) {
-          <a routerLink="/prestamos" class="nav-link">
-            Préstamos
-          </a>
+          <li class="nav-item">
+            <a routerLink="/prestamos" class="nav-link" routerLinkActive="active">
+              Préstamos
+            </a>
+          </li>
         }
         @if (authService.canViewSanctions()) {
-          <a routerLink="/sanciones" class="nav-link">
-            Sanciones
-          </a>
+          <li class="nav-item">
+            <a routerLink="/sanciones" class="nav-link" routerLinkActive="active">
+              Sanciones
+            </a>
+          </li>
         }
         @if (authService.canConfigureSanctions()) {
-          <a routerLink="/configuracion-sanciones" class="nav-link">
-            Configuración sanciones
-          </a>
+          <li class="nav-item">
+            <a routerLink="/configuracion-sanciones" class="nav-link" routerLinkActive="active">
+              Config. sanciones
+            </a>
+          </li>
         }
         @if (authService.canReserveBooks()) {
-          <a routerLink="/mis-reservas" class="nav-link">
-            Mis reservas
-          </a>
+          <li class="nav-item">
+            <a routerLink="/mis-reservas" class="nav-link" routerLinkActive="active">
+              Mis reservas
+            </a>
+          </li>
         }
         @if (authService.canViewAllReservations()) {
-          <a routerLink="/reservas" class="nav-link">
-            Reservas
-          </a>
+          <li class="nav-item">
+            <a routerLink="/reservas" class="nav-link" routerLinkActive="active">
+              Reservas
+            </a>
+          </li>
         }
         @if (authService.canManageCategories()) {
-          <a routerLink="/categorias" class="nav-link">
-            Categorías
-          </a>
+          <li class="nav-item">
+            <a routerLink="/categorias" class="nav-link" routerLinkActive="active">
+              Categorías
+            </a>
+          </li>
         }
         @if (authService.canManageCopies()) {
-          <a routerLink="/ejemplares" class="nav-link">
-            Ejemplares
-          </a>
+          <li class="nav-item">
+            <a routerLink="/ejemplares" class="nav-link" routerLinkActive="active">
+              Ejemplares
+            </a>
+          </li>
         }
-        <a routerLink="/mis-sanciones" class="nav-link">
-          Mis sanciones
-        </a>
+        <li class="nav-item">
+          <a routerLink="/mis-sanciones" class="nav-link" routerLinkActive="active">
+            Mis sanciones
+          </a>
+        </li>
         @if (authService.canManageLibrarians()) {
-          <a routerLink="/bibliotecarios" class="nav-link">
-            Bibliotecarios
-          </a>
+          <li class="nav-item">
+            <a routerLink="/bibliotecarios" class="nav-link" routerLinkActive="active">
+              Bibliotecarios
+            </a>
+          </li>
         }
-       @if (authService.canViewStats()) {
-          <a routerLink="/estadisticas" class="nav-link">
-            Estadísticas
-          </a>
+        @if (authService.canViewStats()) {
+          <li class="nav-item">
+            <a routerLink="/estadisticas" class="nav-link" routerLinkActive="active">
+              Estadísticas
+            </a>
+          </li>
         }
         @if (authService.isAuthenticated()) {
-          <a routerLink="/perfil" class="nav-link">
-            Mi perfil
-          </a>
+          <li class="nav-item">
+            <a routerLink="/perfil" class="nav-link" routerLinkActive="active">
+              Mi perfil
+            </a>
+          </li>
         }
         @if (authService.canViewAuditLogs()) {
-          <a routerLink="/auditoria" class="nav-link">
-            Auditoría
-          </a>
+          <li class="nav-item">
+            <a routerLink="/auditoria" class="nav-link" routerLinkActive="active">
+              Auditoría
+            </a>
+          </li>
         }
         @if (authService.canSendReminders()) {
-          <a routerLink="/recordatorios" class="nav-link">
-            Recordatorios
-          </a>
+          <li class="nav-item">
+            <a routerLink="/recordatorios" class="nav-link" routerLinkActive="active">
+              Recordatorios
+            </a>
+          </li>
         }
-
-        
-        
       </ul>
 
-        
       <ul class="navbar-nav ms-auto align-items-center">
-        
         @if (authService.user()) {
           <li class="nav-item">
-            <span class="nav-link disabled text-light">
+            <span class="nav-user">
               {{ authService.user()?.name }}
             </span>
           </li>
-        
           <li class="nav-item ms-2">
             <button class="btn btn-outline-light btn-sm" (click)="logout()">
               Cerrar sesión
@@ -113,11 +137,10 @@
           </li>
         } @else {
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login">Login</a>
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
           </li>
-
           <li class="nav-item ms-2">
-            <a class="btn btn-outline-light px-3 rounded-pill" routerLink="/register">
+            <a class="btn btn-accent" routerLink="/register">
               Registro
             </a>
           </li>

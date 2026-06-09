@@ -1,11 +1,58 @@
-.card {
-  border-radius: 12px;
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  color: #143320;
 }
 
+h5 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #1e4d2b;
+}
+
+/* Stat cards */
 .stat-card {
-  min-height: 120px;
+  min-height: 110px;
+  border-left: 4px solid #1e4d2b !important;
+  border-top: none !important;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+
+.stat-card:hover {
+  box-shadow: 0 6px 20px rgba(30,77,43,0.14) !important;
+  transform: translateY(-2px);
+}
+
+.stat-card .text-muted {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.775rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 500;
 }
 
 .stat-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.1rem;
   font-weight: 700;
+  color: #1e4d2b;
+  margin-top: 0.25rem;
+}
+
+/* Bottom copies section */
+.border.rounded.p-3 {
+  border-color: #ede8e0 !important;
+  background-color: #fafaf8;
+}
+
+.border.rounded.p-3 .text-muted {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.border.rounded.p-3 h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  color: #1e4d2b;
+  margin-top: 0.2rem;
 }
