@@ -1,0 +1,72 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Auditoría</h2>
+      <p class="text-muted mb-0">
+        Consulta los cambios realizados sobre el inventario.
+      </p>
+    </div>
+
+    <a routerLink="/libros" class="btn btn-outline-secondary">
+      Volver al catálogo
+    </a>
+  </div>
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="alert alert-info">
+      Cargando auditoría...
+    </div>
+  }
+
+  @if (!isLoading && auditLogs.length === 0) {
+    <div class="alert alert-warning">
+      No hay registros de auditoría.
+    </div>
+  }
+
+  @if (!isLoading && auditLogs.length > 0) {
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Usuario</th>
+                <th>Rol</th>
+                <th>Acción</th>
+                <th>Entidad</th>
+                <th>ID entidad</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (auditLog of auditLogs; track auditLog.auditLogId) {
+                <tr>
+                  <td>{{ auditLog.createdAt | date:'dd/MM/yyyy HH:mm' }}</td>
+                  <td>{{ auditLog.userEmail }}</td>
+                  <td>{{ auditLog.userRole }}</td>
+                  <td>
+                    <span [class]="getActionClass(auditLog.action)">
+                      {{ auditLog.action }}
+                    </span>
+                  </td>
+                  <td>{{ auditLog.entityName }}</td>
+                  <td>#{{ auditLog.entityId }}</td>
+                  <td>{{ auditLog.description }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  }
+</div>

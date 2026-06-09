@@ -21,6 +21,7 @@ import { Librarians } from './shared/librarians/librarians';
 import { Users } from './shared/users/users';
 import { Stats } from './shared/stats/stats';
 import { Profile } from './shared/profile/profile';
+import { AuditLogs } from './shared/audit-logs/audit-logs';
 
 
 export const routes: Routes = [
@@ -46,6 +47,7 @@ export const routes: Routes = [
   { path: 'usuarios', component: Users, canActivate: [authGuardGuard] },
   { path: 'estadisticas', component: Stats, canActivate: [authGuardGuard] },
   { path: 'perfil', component: Profile, canActivate: [authGuardGuard] },
+  { path: 'auditoria', component: AuditLogs, canActivate: [authGuardGuard] },
 
 
 ];

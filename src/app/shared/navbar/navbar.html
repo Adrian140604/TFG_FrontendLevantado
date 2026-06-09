@@ -81,6 +81,11 @@
             Mi perfil
           </a>
         }
+        @if (authService.canViewAuditLogs()) {
+          <a routerLink="/auditoria" class="nav-link">
+            Auditoría
+          </a>
+        }
 
         
         

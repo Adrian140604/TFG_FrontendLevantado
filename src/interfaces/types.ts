@@ -196,3 +196,14 @@ export interface Loan {
   status: string;
   extended: boolean;
 }
+
+export interface AuditLog {
+  auditLogId: number;
+  userEmail: string;
+  userRole: string;
+  action: string;
+  entityName: string;
+  entityId: number;
+  description: string;
+  createdAt: string;
+}
