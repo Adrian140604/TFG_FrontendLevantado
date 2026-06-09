@@ -250,7 +250,7 @@ small.text-danger {
 
 .table-responsive {
   border-radius: var(--lib-radius);
-  overflow: hidden;
+  overflow-x: auto;
 }
 
 /* ===== BADGES ===== */
