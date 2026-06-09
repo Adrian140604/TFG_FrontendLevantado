@@ -22,6 +22,7 @@ import { Users } from './shared/users/users';
 import { Stats } from './shared/stats/stats';
 import { Profile } from './shared/profile/profile';
 import { AuditLogs } from './shared/audit-logs/audit-logs';
+import { Reminders } from './shared/reminders/reminders';
 
 
 export const routes: Routes = [
@@ -48,6 +49,7 @@ export const routes: Routes = [
   { path: 'estadisticas', component: Stats, canActivate: [authGuardGuard] },
   { path: 'perfil', component: Profile, canActivate: [authGuardGuard] },
   { path: 'auditoria', component: AuditLogs, canActivate: [authGuardGuard] },
+  { path: 'recordatorios', component: Reminders, canActivate: [authGuardGuard] },
 
 
 ];

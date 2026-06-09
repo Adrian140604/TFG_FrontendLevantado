@@ -86,6 +86,11 @@
             Auditoría
           </a>
         }
+        @if (authService.canSendReminders()) {
+          <a routerLink="/recordatorios" class="nav-link">
+            Recordatorios
+          </a>
+        }
 
         
         

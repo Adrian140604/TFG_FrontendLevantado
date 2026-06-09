@@ -207,3 +207,8 @@ export interface AuditLog {
   description: string;
   createdAt: string;
 }
+
+export interface ReminderResponse {
+  remindersSent: number;
+  message: string;
+}

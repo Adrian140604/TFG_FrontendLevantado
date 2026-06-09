@@ -143,5 +143,9 @@ export class AuthService {
     const role = this._user()?.role?.trim().toUpperCase();
     return role === 'ADMIN';
   }
+  canSendReminders(): boolean {
+    const role = this._user()?.role?.trim().toUpperCase();
+    return role === 'ADMIN' || role === 'BIBLIOTECARIO';
+  }
   
 }
